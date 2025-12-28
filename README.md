@@ -25,9 +25,10 @@ Public Const ADOConnect As String = "<your SQL Server connection string>"
 ```
 
 ## Modules
-| Module              | Purpose
----------------------------------------------------------------------------
-| `SQLConnection.bas` | Manages shared ADO connection and command lifecycle
-| `SQLMethods.bas'    | Core SQL execution and helper routines
-| `Common.bas`        | General utility functions
-| `Interaction.bas`   | Higher-level interaction helpers
+
+| Module | Purpose |
+|--------|---------|
+| `SQLConnection.bas` | Manages shared ADO connection and command lifecycle |
+| `SQLMethods.bas` | Core SQL execution and helper routines |
+| `Common.bas` | General utility functions |
+| `Interaction.bas` | Higher-level interaction helpers |
