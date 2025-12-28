@@ -1,3 +1,22 @@
+'====================================================================
+' Module: SQLConnection
+'
+' Purpose:
+'   Manages the lifecycle of a shared ADO connection and command
+'   object for direct SQL Server communication.
+'
+' Requirements:
+'   - A valid SQL Server connection string must be provided via
+'     the global constant or variable: ADOConnect
+'
+' Usage:
+'   Call OpenSQL() before executing commands.
+'   The shared objects SQLcn and SQLCommand will be initialized.
+'
+' Notes:
+'   This module is designed for high-performance Access front-ends
+'   using SQL Server back-ends.
+'====================================================================
 Attribute VB_Name = "SQLConnection"
 Option Compare Database
 Option Explicit
@@ -21,6 +40,7 @@ Public Function OpenSQL(Optional ByVal lTimeout As Long = 90) As Boolean
     
     Set SQLcn = New ADODB.Connection
     SQLcn.ConnectionTimeout = lTimeout
+    ' ADOConnect must contain a valid SQL Server connection string
     SQLcn.open ADOConnect
     OpenSQL = True
     
@@ -100,5 +120,6 @@ Except:
     Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "CloseSQL", , ModName)
     Resume Finally
 End Sub
+
 
 
