@@ -34,5 +34,6 @@ Public Const ADOConnect As String = "<your SQL Server connection string>"
 | `Interaction.bas` | Higher-level interaction helpers |
 
 ## Note
-Portions of SQLMethods.bas, including the BuildParameter routine, were developed with the assistance
-of AI-based tooling and subsequently reviewed and refined as part of the overall library design.
+Portions of this library were developed with the assistance of AI-based tooling as part of the iterative design and review process.
+Core architecture, abstractions, and problem-solving logic — including routines such as SQLInfo, IsValidSQLObject, 
+and SearchPredicate — were designed and implemented as part of the original library development.
