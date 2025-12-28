@@ -1,5 +1,6 @@
 # vba-sql-methods
 VBA that talks directly to SQL Server
+
 Enterprise-grade VBA modules for direct SQL Server communication via ADO.
 
 This repository contains reusable, production-ready VBA components designed for Microsoft Access
