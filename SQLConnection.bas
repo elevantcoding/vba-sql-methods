@@ -11,7 +11,7 @@
 '
 ' Usage:
 '   Call OpenSQL() before executing commands.
-'   The shared objects SQLcn and SQLCommand will be initialized.
+'   The shared objects SQLcn and SQLcommand will be initialized.
 '
 ' Notes:
 '   This module is designed for high-performance Access front-ends
@@ -120,6 +120,7 @@ Except:
     Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "CloseSQL", , ModName)
     Resume Finally
 End Sub
+
 
 
 
