@@ -34,4 +34,5 @@ Public Const ADOConnect As String = "<your SQL Server connection string>"
 | `Interaction.bas` | Higher-level interaction helpers |
 
 ## Note
-In module SQLMethods.bas, BuildParameter was created with AI-assistance.
+Portions of SQLMethods.bas, including the BuildParameter routine, were developed with the assistance
+of AI-based tooling and subsequently reviewed and refined as part of the overall library design.
