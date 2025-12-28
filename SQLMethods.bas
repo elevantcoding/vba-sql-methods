@@ -480,7 +480,6 @@ Public Function BuildParameter(ByVal cmd As ADODB.Command, ByVal Value As Varian
     Optional ByVal size As Variant = -1) As ADODB.Parameter
     On Error GoTo Except
 
-    ' chatGPT
     Dim p As ADODB.Parameter
     Dim direction As ADODB.ParameterDirectionEnum
     
@@ -1074,3 +1073,4 @@ Except:
     Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "SearchPredicate", , ModName)
     Resume Finally
 End Function
+
