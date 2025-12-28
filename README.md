@@ -22,6 +22,7 @@ The host application must define:
 
 ```vb
 Public Const ADOConnect As String = "<your SQL Server connection string>"
+```
 
 ## Modules
 | Module              | Purpose
