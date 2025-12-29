@@ -7,10 +7,10 @@ This repository contains reusable, production-ready VBA components designed for 
 front-ends that communicate directly with SQL Server back-ends
 
 ## Features
-Shared ADO connection and command management
-Clean separation between Access UI and SQL Server logic
-High-performance deisgn for enterprise-scale systems
-Simple, consistent calling patterns
+Shared ADO connection and command management  
+Clean separation between Access UI and SQL Server logic  
+High-performance deisgn for enterprise-scale systems  
+Simple, consistent calling patterns  
 
 ## Architecture Overview
 The library is designed to be embedded into an Access application and
