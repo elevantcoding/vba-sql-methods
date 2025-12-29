@@ -744,7 +744,7 @@ Public Function SQLExportToXL(ByVal strFullFilePath As String, ByVal strSQL As S
         If i > 0 Then strSQL = strRep
             
         ' use SQL connection
-        Call OpenADO
+        Call OpenSQL
         adors.open strSQL, SQLConnect, adOpenForwardOnly, adLockReadOnly
     Else
         ' ensure proper tokens
@@ -1073,5 +1073,6 @@ Except:
     Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "SearchPredicate", , ModName)
     Resume Finally
 End Function
+
 
 
