@@ -400,7 +400,7 @@ On Error GoTo Except
     End If
 
 Finally:
-    Call CloseMsgForm
+    Call CloseMsgFrm
     Call CloseADORS(adors)
     If Not stream Is Nothing Then
         If blnStream Then stream.Close
@@ -629,7 +629,7 @@ Public Function SQLExportSPToXL(ByVal strFullFilePath As String, ByVal strSPName
 
 ExitProcessing:
 Finally:
-    Call CloseMsgForm
+    Call CloseMsgFrm
     Call CloseADORS(adors)
     If Not rng Is Nothing Then Set rng = Nothing
     If Not blnDisplay Then
@@ -833,7 +833,7 @@ Public Function SQLExportToXL(ByVal strFullFilePath As String, ByVal strSQL As S
     
 ExitProcessing:
 Finally:
-    Call CloseMsgForm
+    Call CloseMsgFrm
     Call CloseADORS(adors)
     If Not rng Is Nothing Then Set rng = Nothing
     If Not wksht Is Nothing Then Set wksht = Nothing
@@ -1073,4 +1073,5 @@ Except:
     Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "SearchPredicate", , ModName)
     Resume Finally
 End Function
+
 
