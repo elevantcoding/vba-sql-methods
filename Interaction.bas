@@ -64,7 +64,7 @@ Except:
     Resume Finally
     
 End Sub
-Public Sub CloseMsgForm()
+Public Sub CloseMsgFrm()
     On Error GoTo Except
     
     ' global/public-level declaration for MsgFrm in this module
@@ -74,7 +74,7 @@ Finally:
     Exit Sub
 
 Except:
-    Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "CloseMsgForm", , ModName)
+    Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "CloseMsgFrm", , ModName)
     Resume Finally
 
 End Sub
@@ -231,4 +231,5 @@ Except:
     Resume Finally
 
 End Function
+
 
