@@ -233,5 +233,56 @@ Except:
 
 End Function
 
+Function IsMultipleValues(ByVal strOpenArg As String) As Boolean
+    On Error GoTo Except
 
+    Dim i As Long
+    Dim lCount As Long
+    Dim val() As String
+    
+    IsMultipleValues = False
+    
+    If Len(strOpenArg) = 0 Then Exit Function
+    
+    val = Split(strOpenArg, ";")
+    lCount = 0
+    For i = LBound(val) To UBound(val)
+        If val(i) <> "" Then
+          lCount = lCount + 1
+        End If
+    Next
+    
+    IsMultipleValues = (lCount > 1)
+    
+Finally:
+    Exit Function
+
+Except:
+    Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "IsMultipleValues", , ModName)
+    Resume Finally
+End Function
+
+Function GetOpenArgValue(ByVal strOpenArg As String, ByVal lReturn As Long) As Variant
+    On Error GoTo Except
+    
+    Dim GetInfo() As String
+     
+    GetOpenArgValue = Null
+    
+    If Len(strOpenArg) = 0 Then Exit Function
+    
+    GetInfo = Split(strOpenArg, ";")
+    
+    If lReturn >= LBound(GetInfo) And lReturn <= UBound(GetInfo) Then
+        GetOpenArgValue = GetInfo(lReturn)
+    End If
+
+Finally:
+    Exit Function
+
+Except:
+    Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "GetOpenArgValue", , ModName)
+    Resume Finally
+
+End Function
 
