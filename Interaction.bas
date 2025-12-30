@@ -130,7 +130,7 @@ Public Function RespondMsg(ByVal FormTitle As String, ByVal Prompt As String, By
         FormTitle = "Response Requested: " & FormTitle
     Else
         If cCount > 1 Then
-            MsgBox "If not request input, more than one response option is not needed.", vbInformation, "ResponseMsg"
+            MsgBox "If not requesting input, more than one response option is not needed.", vbInformation, "ResponseMsg"
             Exit Function
         End If
         FormTitle = "Information: " & FormTitle
@@ -285,6 +285,7 @@ Except:
     Resume Finally
 
 End Function
+
 
 
 
