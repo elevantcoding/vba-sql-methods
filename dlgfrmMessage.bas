@@ -55,7 +55,7 @@ Private Sub Form_Open(Cancel As Integer)
         End If
     End If
     
-    'get value of arg 9, this will be the default response option
+    'get value of arg 7, this will be the default response option
     defaultBtn = val(Nz(GetOpenArgValue(Me.OpenArgs, 7), 1))
     
     Select Case defaultBtn
