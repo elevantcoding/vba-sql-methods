@@ -5,7 +5,7 @@ Option Explicit
 ' public reference to dlgfrmNotification for brevity
 Public Const MsgFrm As String = "dlgfrmNotification"
 
-'used with RespondMsg
+'used with RespondMsg / form module code in vba-sql-methods/dlgfrmMessage.bas
 Public MsgResponse As Variant
 
 Const ModName As String = "Interaction"
@@ -285,4 +285,5 @@ Except:
     Resume Finally
 
 End Function
+
 
