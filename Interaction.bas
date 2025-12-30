@@ -14,6 +14,7 @@ Public Sub DisplayMsg(Optional ByVal MainCap As String = " ", Optional ByVal Lab
     On Error GoTo Except
 
     ' uses a 1 x 4 form without buttons for user notifications
+    ' see dlgMessage.bas for the form module code
     ' form contains three (3) labels for which captions can be set
     ' at runtime
     ' options: form caption, three lines of information, font size, form color, number of seconds to display
@@ -231,5 +232,6 @@ Except:
     Resume Finally
 
 End Function
+
 
 
