@@ -9,7 +9,7 @@ front-ends that communicate directly with SQL Server back-ends
 ## Features
 Shared ADO connection and command management  
 Clean separation between Access UI and SQL Server logic  
-High-performance deisgn for enterprise-scale systems  
+High-performance design for enterprise-scale systems  
 Simple, consistent calling patterns  
 
 ## Architecture Overview
