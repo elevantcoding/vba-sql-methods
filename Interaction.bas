@@ -79,6 +79,35 @@ Except:
     Resume Finally
 
 End Sub
+
+Public Function IsUniqueVals(ByVal blnCaseSensitive As Boolean, ParamArray vals() As Variant) As Boolean
+    On Error GoTo Except
+    
+    ' determine if values in an array contain any duplicates
+    Dim i As Long, k As Long, iVal As String, kVal As String, methodComp As Long
+    
+    ' comparison method text = 1, binary = 0
+    methodComp = 1
+    If blnCaseSensitive Then methodComp = 0
+    
+    For i = LBound(vals) To UBound(vals)
+        iVal = vals(i)
+        For k = i + 1 To UBound(vals)
+            kVal = vals(k)
+            If StrComp(iVal, kVal, methodComp) = 0 Then Exit Function
+        Next
+    Next
+    
+    IsUniqueVals = True
+    
+Finally:
+    Exit Function
+
+Except:
+    Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "IsUniqueVals", , ModName)
+    Resume Finally
+    
+End Function
 Public Function RespondMsg(ByVal FormTitle As String, ByVal Prompt As String, ByVal strCap1 As String, Optional ByVal strCap2 As String = "", _
     Optional ByVal strCap3 As String = "", Optional ByVal blnExpectResponse As Boolean = False, Optional ByVal lDisplaySeconds As Long = 0, _
     Optional ByVal DefaultBtnIndex As Integer = 1) As Variant
@@ -123,16 +152,13 @@ Public Function RespondMsg(ByVal FormTitle As String, ByVal Prompt As String, By
     ' ensure proper count of captions indicated for method selected
     ' define main caption prefix
     If blnExpectResponse Then
-        If cCount < 2 Then
-            MsgBox "If requesting a response, at least two response options must be specified.", vbInformation, "ResponseMsg"
-            Exit Function
-        End If
+        If cCount < 2 Then Call RaiseCustomErr(RespondMsg_ExpResp, ProcName)
+        
+        If Not IsUniqueVals(False, strCap1, strCap2, strCap3) Then Call RaiseCustomErr(RespondMsg_Captions, ProcName)
+        
         FormTitle = "Response Requested: " & FormTitle
     Else
-        If cCount > 1 Then
-            MsgBox "If not requesting input, more than one response option is not needed.", vbInformation, "ResponseMsg"
-            Exit Function
-        End If
+        If cCount > 1 Then Call RaiseCustomErr(RespondMsg_ExpNoResp, ProcName)
         FormTitle = "Information: " & FormTitle
     End If
     
@@ -166,6 +192,7 @@ Except:
     Resume Finally
     
 End Function
+
 Public Sub OpenAnyFileType(ByVal strPath As String, ByVal strOrigin As String)
     On Error GoTo Except
   
@@ -285,6 +312,7 @@ Except:
     Resume Finally
 
 End Function
+
 
 
 
