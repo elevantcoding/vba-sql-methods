@@ -101,6 +101,7 @@ Except:
     Resume Finally
 End Function
 
+-- like T-SQL IN statement for comparing variable types, used in SQLCmdSP
 Public Function IsIn(ByVal ValComp As Variant, ParamArray Vals() As Variant) As Boolean
     On Error GoTo Except
     
@@ -125,8 +126,8 @@ Except:
     Resume Finally
 End Function
 
+-- order-agnostics value comparision
 Public Function IsBetween(ByVal evalNum As Double, ByVal valOne As Double, ByVal valTwo As Double) As Boolean
-
     Dim val As Double
     If valOne > valTwo Then
         val = valOne
