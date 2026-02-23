@@ -1,6 +1,69 @@
 ' publicly-available vars for SQL connection
+Public SQLConnect As ADODB.Connection
 Public SQLCmd As ADODB.Command
 Public SQLPrm As ADODB.Parameter
+
+' mSQL module connection string
+Private Function ADOConnect() As String    
+    ADOConnect = "YourConnectionString"
+End Function
+
+' global SQL connection
+Public Sub OpenSQL(Optional ByVal lTimeout As Long = 90)
+    On Error GoTo Except
+    
+    Const ProcName As String = "OpenSQL"
+    
+    If Not SQLConnect Is Nothing Then
+        If SQLConnect.State = adStateOpen Then Exit Sub
+        Set SQLConnect = Nothing
+    End If
+    
+    Set SQLConnect = New ADODB.Connection
+    SQLConnect.ConnectionTimeout = lTimeout
+    SQLConnect.Open ADOConnect
+    
+Finally:
+    Exit Sub
+
+Except:
+    ReportExcept Erl, Err.Number, Err.Description, ProcName, ModName
+    Resume Finally
+End Sub
+
+-- the type of command, defaults to stored procedure
+Sub SQLCmdAsType(Optional ByVal lTimeout As Long = 90, Optional ByVal CmdType As ADODB.CommandTypeEnum = adCmdStoredProc)
+    On Error GoTo Except
+    
+    Const ProcName As String = "SQLCmdAsType"
+    If SQLConnect Is Nothing Then OpenSQL
+    
+    If SQLCmd Is Nothing Then
+        Set SQLCmd = New ADODB.Command
+    Else
+        With SQLCmd
+            If .Parameters.Count > 0 Then
+                Do Until .Parameters.Count = 0
+                    .Parameters.Delete 0
+                Loop
+            End If
+        End With
+    End If
+    
+    With SQLCmd
+        .ActiveConnection = SQLConnect
+        .CommandType = CmdType
+        .CommandTimeout = lTimeout
+        .NamedParameters = (CmdType = adCmdStoredProc)
+    End With
+    
+Finally:
+    Exit Sub
+
+Except:
+    ReportExcept Erl, Err.Number, Err.Description, ProcName, ModName
+    Resume Finally
+End Sub
 
 Public Function SQLCmdSP(ByVal cmdText As String, ParamArray SP() As Variant) As Boolean
     On Error GoTo Except
@@ -20,7 +83,7 @@ Public Function SQLCmdSP(ByVal cmdText As String, ParamArray SP() As Variant) As
     ' use global SQLCmd
     SQLCmdAsType 30, adCmdStoredProc
     
-    ' cmdText = name of stored proc
+    ' set procedure name
     With SQLCmd
         .CommandText = cmdText
         
