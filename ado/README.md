@@ -3,7 +3,7 @@
 ## 🚀 Key Features
 
 * **ADO Stored Procedure Wrapper:** A robust `SQLCmdSP` function that utilizes `ParamArray` injections to eliminate boilerplate code. Handles complex `adDecimal` types and output parameters with ease.
-* **T-SQL Logic Helpers:** Custom `IsIn()` and `IsNotIn()` functions that bring T-SQL syntax convenience to VBA business logic, featuring strict type-safety checks.
+* **T-SQL Logic Helpers:** Custom `IsIn()` function that bring T-SQL syntax convenience to VBA business logic, featuring strict type-safety checks.
 
 ## 📋 Usage Example
 ```vba
