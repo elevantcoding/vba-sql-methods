@@ -189,7 +189,7 @@ Except:
     Resume Finally
 End Function
 
--- order-agnostics value comparision
+-- order-agnostic value comparision
 Public Function IsBetween(ByVal evalNum As Double, ByVal valOne As Double, ByVal valTwo As Double) As Boolean
     Dim val As Double
     If valOne > valTwo Then
