@@ -148,8 +148,6 @@ Finally:
 Except:
     strDesc = Err.Description
     Select Case Err.Number
-        Case 3265 ' named column not found in the select statement
-            MsgBox "Referenced column " & strResultColumn & " is not found in the SELECT statement: " & vbCrLf & vbCrLf & strSQL & ".", vbInformation, "SQLResult: " & strResultColumn
 
         Case -2147217887 ' invalid SQL statement
             MsgBox "Please check the SQL statement passed to SQLResult.  SQL is unable to parse the statement.", vbInformation, "SQLResult: SQL Structure"
@@ -1073,6 +1071,7 @@ Except:
     Call SystemFunctionRpt(Err.Number, Erl, Err.Description, Err.Source, "SearchPredicate", , ModName)
     Resume Finally
 End Function
+
 
 
 
